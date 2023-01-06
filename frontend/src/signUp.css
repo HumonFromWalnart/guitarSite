@@ -1,0 +1,44 @@
+body {
+    background-color: black;
+}
+
+.bigBoiContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#input {
+    border: 2px solid rgb(194, 184, 184);
+    height: 50px;
+    width: 500px;
+    border-radius: 5px;
+    background-color: rgba(240, 248, 255, 0);
+    outline: none;
+    color: white;
+    font-size: 15px;
+}
+
+#submitButton {
+    border: 2px solid rgb(194, 184, 184);
+    height: 30px;
+    background-color: rgba(250, 235, 215, 0);
+    border-radius: 5px;
+    font-size: 15px;
+    color: white;
+}
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.738);
+}
+
+.YOUBLOODYTHEIF{
+    font-size: 50px;
+}
