@@ -7,7 +7,7 @@ const getUser = async (req, res) => {
         const user = await User.findById(id);
         console.log(user);
         res.status(200).json({
-            message: `You just called out ${user.firstName}`,
+            message: `You just called out ${user.guitarist?.name}`,
             data: user
         })
     } catch (err) {

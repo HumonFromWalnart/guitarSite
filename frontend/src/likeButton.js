@@ -1,27 +1,32 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './likeButton.css'
 import axios from "axios";
+import { PostData } from './mainSource';
 
 export const LikeButton = ({ id, like },) => {
     const [likes, setLikes] = useState(like);
-    const [condi, setCondi] = useState(true);
+    const { getData } = useContext(PostData);
 
     const addLike = async () => {
-        setLikes(like)
-        if (condi == true) {
-            setCondi(false)
-        }if (condi == false) {
-            alert("you have only 1 option left and that is dislike")
-        }
-        const post = await axios.patch(`http://localhost:1967/${id}`, { like: like + 1 });
-        console.log(likes);
+        setLikes(like + 1);
+        const post = await axios.patch(`http://localhost:6969/post/${id}`, { like: like + 1 });
+        getData();
+        console.log(likes, like);
+    }
+
+    const reduceLike = async () => {
+        setLikes(like - 1)
+        const post = await axios.patch(`http://localhost:6969/post/${id}`, { like: like - 1 });
+        getData();
+        console.log(likes, like);
     }
 
     return (
-        <div>
-            <button onClick={addLike}>like</button>
-            <div>{likes}</div>
-        </div >
+        <div className='buttons'>
+            <div onClick={addLike} id='icon'>+</div>
+            <div id='number'>{likes}</div>
+            <div onClick={reduceLike} id='icon'>-</div>
+        </div>
     )
 }
 

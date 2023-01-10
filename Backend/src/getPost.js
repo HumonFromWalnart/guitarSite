@@ -6,7 +6,7 @@ const getPost = async (req, res) => {
         const post = await Post.findById(id);
         console.log(post);
         res.status(200).json({
-            message: `You just called out ${post.guitarist.name}`,
+            message: `You just called out ${post.name}`,
             data: post
         })
     } catch (err) {

@@ -1,11 +1,11 @@
 import { model, Schema } from 'mongoose';
 
 const UserSchema = new Schema({
-    // guitarist: {
-    //     name: String,
-    //     picture: String,
-    //     description: String
-    // },
+    guitarist: {
+        name: String,
+        picture: String,
+        description: String
+    },
     name: String,
     picture: String,
     description: String,

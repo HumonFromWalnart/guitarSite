@@ -10,7 +10,7 @@ export const LogIn = () => {
     const navigate = useNavigate();
 
     const createUser = async () => {
-        const { data } = await axios.post('http://localhost:1967/login', { name: guitar, password: guitarist });
+        const { data } = await axios.post('http://localhost:6969/login', { name: guitar, password: guitarist });
         const user = data.data;
         localStorage.setItem('uid', user._id)
 

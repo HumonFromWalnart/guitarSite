@@ -1,3 +1,31 @@
-*{
-    color: white;
+* {
+    color: black;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 120px;
+    text-align: center;
+    align-items: center;
+}
+
+#icon {
+    font-size: 25px;
+    background-color: rgb(156, 156, 156);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 2px;
+}
+
+#icon:active {
+    background-color: rgb(183, 188, 204);
+    transform: scale(0.9);
+}
+
+#number {
+    font-size: 20px;
 }

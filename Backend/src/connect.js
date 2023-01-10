@@ -1,13 +1,16 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
+import dotenv from "dotenv"
 
-const uri = "mongodb+srv://chara:Lmong@cluster0.gkyndj3.mongodb.net/guitarSite?retryWrites=true&w=majority";
+dotenv.config();
+
+const uri = process.env.secure_link || ""
 
 const connect = async () => {
     try {
         await mongoose.connect(uri);
-        console.log('LEsgooooooo WOOOOOOOO')
+        console.log('Your database is ready')
     } catch (error) {
-        console.log('NOOOOOOOo')
+        console.log('Database hates to wake on Mondays')
     }
 }
 

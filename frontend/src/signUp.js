@@ -10,7 +10,7 @@ export const SignUp = () => {
     const navigate = useNavigate();
 
     const createUser = async () => {
-        const user = await axios.post('http://localhost:1967', { name: guitar, password: guitarist });
+        const user = await axios.post('http://localhost:6969', { name: guitar, password: guitarist });
         console.log(user)
         if (user !== undefined) {
             navigate('/LoadingScreen')

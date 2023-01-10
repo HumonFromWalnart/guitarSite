@@ -7,7 +7,7 @@ const Source = ({ children }) => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
-    const res = await axios.get("http://localhost:1967/getPosts");
+    const res = await axios.get("http://localhost:6969/getPosts");
     console.log(res.data);
     setData(res.data.data);
   }
@@ -17,7 +17,7 @@ const Source = ({ children }) => {
   }, []);
 
   return (
-    <PostData.Provider value={{ data }}>
+    <PostData.Provider value={{ data, getData }}>
       {children}
     </PostData.Provider>
   );

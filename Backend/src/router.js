@@ -14,16 +14,16 @@ import getPosts from "./getPosts.js";
 
 const router = express.Router()
 
-router.get('/user/:firstName', getUserByUsername)
-router.post('/user', createUser)
+// router.get('/user/:name', getUserByUsername)
+router.post('/createUser', createUser)
 router.post('/user/login', loginUser)
 router.get('/user', getUsers)
 router.get('/user/:id', getUser)
-router.patch('/user/:id', updateUser)
-router.delete('/user/:id', deleteUser)
+router.patch('/updateUser/:id', updateUser)
+router.delete('/deleteUser/:id', deleteUser)
 router.post('/post', createPost)
-router.get('/getPost', getPost)
-router.patch('/:id', updatePost)
+router.get('/getPost/:id', getPost)
+router.patch('/post/:id', updatePost)
 router.delete('/deletePost', deletePost)
 router.get('/getPosts', getPosts)
 

@@ -8,7 +8,7 @@ const updatePost = async (req, res) => {
         const updated = await Post.findByIdAndUpdate(id, { ...req.body });
         console.log(updated)
         res.status(200).json({
-            message: `User with ${id} id got updated`,
+            message: `Post with ${id} id updated`,
             data: updated
         })
     } catch (err) {
