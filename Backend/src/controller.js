@@ -4,13 +4,6 @@ import Jwt from 'jsonwebtoken'
 const createUser = async (req, res, next) => {
     console.log(req.body)
 
-const token = Jwt.sign(
-    {name : req.bidy.name, password : req.bidy.password},
-    process.env.JWT_SECRET || "password",
-    { expiresIn : "132m" },
-    console.log(token)
-)
-
     if (
         !req.body?.name ||
         !req.body?.password
@@ -24,10 +17,11 @@ const token = Jwt.sign(
     res
         .status(201)
         .json({ message: 'new user has created', data: createUser })
-
+        const token = Jwt.sign(
+            {name : req.body.name, password : req.body.password},
+            process.env.JWT_SECRET || "password",
+            { expiresIn : "132m" },
+        )
 }
 
 export default createUser;
-
-import jwt from 'jsonwebtoken'
-

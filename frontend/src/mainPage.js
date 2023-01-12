@@ -1,16 +1,17 @@
 import './signUp.css'
 import { PostData } from "./mainSource";
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './mainPage.css'
 import { useNavigate } from 'react-router';
 import LikeButton from './likeButton';
+import axios from 'axios';
 
 export const MainPage = (e) => {
     const { data } = useContext(PostData);
-    const navigate = useNavigate();
-
+    // const navigate = useNavigate();
     console.log(localStorage.getItem('uid'))
     console.log(data)
+
 
     return (
         <div className="container" >
