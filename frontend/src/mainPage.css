@@ -10,12 +10,12 @@ body {
 }
 
 #picture {
-    width: 800px;
-    height: 400px;
+    width: 400px;
+    height: 500px;
 }
 
 .guitarContainer {
-    width: 800px;
+    width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,3 +32,7 @@ p {
     text-align: center;
     color: black;
 }
+
+/* img {
+    pointer-events: none;
+} */

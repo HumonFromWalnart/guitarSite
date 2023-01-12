@@ -39,6 +39,11 @@ body {
     color: rgba(255, 255, 255, 0.738);
 }
 
-.YOUBLOODYTHEIF{
+.YOUBLOODYTHEIF {
     font-size: 50px;
+}
+
+.signInContainer {
+    display: flex;
+    flex-direction: column;
 }

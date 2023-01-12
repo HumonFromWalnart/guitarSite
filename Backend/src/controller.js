@@ -1,7 +1,16 @@
 import User from './mongoose.js'
+import Jwt from 'jsonwebtoken'
 
 const createUser = async (req, res, next) => {
     console.log(req.body)
+
+const token = Jwt.sign(
+    {name : req.bidy.name, password : req.bidy.password},
+    process.env.JWT_SECRET || "password",
+    { expiresIn : "132m" },
+    console.log(token)
+)
+
     if (
         !req.body?.name ||
         !req.body?.password
@@ -19,3 +28,6 @@ const createUser = async (req, res, next) => {
 }
 
 export default createUser;
+
+import jwt from 'jsonwebtoken'
+

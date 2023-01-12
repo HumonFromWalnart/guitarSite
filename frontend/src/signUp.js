@@ -5,43 +5,28 @@ import SubmitButton from "./submitButton";
 import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
-    const [guitarist, setGuitarist] = useState('');
-    const [guitar, setGuitar] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
     const createUser = async () => {
-        const user = await axios.post('http://localhost:6969', { name: guitar, password: guitarist });
+        const { data } = await axios.post('http://localhost:6969/user/Create', { name: name, password: password });
+        const user = data.data;
+        localStorage.setItem('pass', user.password)
         console.log(user)
         if (user !== undefined) {
-            navigate('/LoadingScreen')
+            navigate('/')
         }
     }
 
     return (
         <div className="bigBoiContainer">
             <div className="inputContainer">
-            </div>
-            <div>
-                <input placeholder="Guitar" type={'text'} id="input" onChange={(e) => setGuitar(e.target.value)} value={guitar}></input>
-                <input placeholder="Guitarist Name" type={'text'} id="input" onChange={(e) => setGuitarist(e.target.value)} value={guitarist}></input>
+                <input placeholder="Name" type={'text'} id="input" onChange={(e) => setName(e.target.value)} value={name}></input>
+                <input placeholder="Password" type={'text'} id="input" onChange={(e) => setPassword(e.target.value)} value={password}></input>
                 <SubmitButton onClick={createUser} />
             </div>
         </div>
     );
 }
 export default SignUp;
-{/* {
-                data.map((cur) => {
-                    return (
-                        <div className="BigContainer">
-                            <div className="fullName">
-                                <div id="firstName">{cur.firstName}</div>
-                                <div id="lastName">{cur.lastName}</div>
-                            </div>
-                            <img src={cur.picture} id="picture"></img>
-                            <div>{cur.line}</div>
-                            <a href={cur.email}>More about me</a>
-                        </div>
-                    );
-                })
-            } */}

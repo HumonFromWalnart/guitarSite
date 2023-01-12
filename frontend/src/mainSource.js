@@ -7,7 +7,7 @@ const Source = ({ children }) => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
-    const res = await axios.get("http://localhost:6969/getPosts");
+    const res = await axios.get("http://localhost:6969/posts");
     console.log(res.data);
     setData(res.data.data);
   }

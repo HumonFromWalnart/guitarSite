@@ -10,6 +10,7 @@ const UserSchema = new Schema({
     picture: String,
     description: String,
     password: String,
+    ticket : String,
     guitar: {
         name: String,
         picture: String,

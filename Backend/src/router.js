@@ -12,19 +12,29 @@ import updatePost from "./updatePost.js";
 import deletePost from "./deletePost.js";
 import getPosts from "./getPosts.js";
 
-const router = express.Router()
+const entry = express.Router();
 
-// router.get('/user/:name', getUserByUsername)
-router.post('/createUser', createUser)
-router.post('/user/login', loginUser)
-router.get('/user', getUsers)
-router.get('/user/:id', getUser)
-router.patch('/updateUser/:id', updateUser)
-router.delete('/deleteUser/:id', deleteUser)
-router.post('/post', createPost)
-router.get('/getPost/:id', getPost)
-router.patch('/post/:id', updatePost)
-router.delete('/deletePost', deletePost)
-router.get('/getPosts', getPosts)
+const lemmeSeeYourTicket = (req, res, next) => {
 
-export default router;
+    if (req.body.ticket) {
+        next();
+    } else {
+        res.status(403).send("no ticket no entry ma boi")
+    }
+
+}
+
+// entry.get('/user/:name', getUserByUsername)
+entry.post('/user/create', createUser)
+entry.post('/user/login', lemmeSeeYourTicket, loginUser)
+entry.get('/users', getUsers)
+entry.get('/user/:id', getUser)
+entry.patch('/user/:id', updateUser)
+entry.delete('/user/:id', deleteUser)
+entry.post('/post', createPost)
+entry.get('/post/:id', getPost)
+entry.patch('/post/:id', updatePost)
+entry.delete('/post/:id', deletePost)
+entry.get('/posts', getPosts)
+
+export default entry;

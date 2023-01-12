@@ -5,8 +5,7 @@ const PostSchema = new Schema({
     name: String,
     picture: String,
     description: String,
-    like: Number,
-    id : String
+    like: Number
     // }
 }, { versionKey: false });
 
