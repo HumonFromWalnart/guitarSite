@@ -10,14 +10,16 @@ export const LogIn = () => {
     const navigate = useNavigate();
 
     const createUser = async () => {
-        const token = localStorage.getItem("pass")
-        const { data } = await axios.post('http://localhost:6969/user/login', { name: name, password: password, ticket: token });
+        const { data } = await axios.post('http://localhost:6969/user/login', { name: name, password: password });
         const user = data.data;
+        const token = data.token
+        console.log(token)
         localStorage.setItem('uid', user._id)
+        localStorage.setItem("token", token)
 
-        // if (user !== undefined) {
-        //     navigate('/')
-        // }
+        if (user !== undefined) {
+            navigate('/')
+        }
     }
 
     useEffect(() => {

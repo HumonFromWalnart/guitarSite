@@ -1,4 +1,5 @@
 import User from "./mongoose.js";
+import jwt from "jsonwebtoken"
 
 const loginUser = async (req, res) => {
 
@@ -6,17 +7,18 @@ const loginUser = async (req, res) => {
 
     try {
         const user = await User.findOne({ name });
-        if (user?.password == password) {
-            res.status(200).json({
-                message: `You just called out ${user.guitarist}`,
-                data: user
-            })
-        } else {
-            res.status(401).json({
-                message: "Get off, you bloody theif",
-                data: user
-            })
-        }
+        console.log(user)
+        const token = jwt.sign(
+            { name: req.body.name, password: req.body.password },
+            process.env.JWT_SECRET || "password",
+            { expiresIn: "132m" },
+        )
+        res.status(200).json({
+            message: "Get off, you bloody theif",
+            data: user,
+            token
+        })
+
     } catch (err) {
         console.log(err);
         return res.status(400).json({ message: err, data: null })

@@ -11,30 +11,34 @@ import getPost from "./getPost.js";
 import updatePost from "./updatePost.js";
 import deletePost from "./deletePost.js";
 import getPosts from "./getPosts.js";
-
-const entry = express.Router();
+import jwt from 'jsonwebtoken'
 
 const lemmeSeeYourTicket = (req, res, next) => {
 
-    if (req.body.ticket) {
-        next();
+    if (req.body.token) {
+        jwt.verify(req.body.token, process.env.JWT_SECRET || "password", (err, result) => {
+            if (err) res.status(400).send("no ticket no entry ma boi")
+            else next();
+        })
     } else {
         res.status(403).send("no ticket no entry ma boi")
     }
 
 }
+const entry = express.Router();
+
 
 // entry.get('/user/:name', getUserByUsername)
 entry.post('/user/create', createUser)
-entry.post('/user/login', lemmeSeeYourTicket, loginUser)
-entry.get('/users', getUsers)
-entry.get('/user/:id', getUser)
-entry.patch('/user/:id', updateUser)
-entry.delete('/user/:id', deleteUser)
-entry.post('/post', createPost)
-entry.get('/post/:id', getPost)
-entry.patch('/post/:id', updatePost)
-entry.delete('/post/:id', deletePost)
-entry.get('/posts', getPosts)
+entry.post('/user/login', loginUser)
+entry.get('/users', lemmeSeeYourTicket, getUsers)
+entry.get('/user/:id', lemmeSeeYourTicket, getUser)
+entry.patch('/user/:id', lemmeSeeYourTicket, updateUser)
+entry.delete('/user/:id', lemmeSeeYourTicket, deleteUser)
+entry.post('/post', lemmeSeeYourTicket, createPost)
+entry.get('/post/:id', lemmeSeeYourTicket, getPost)
+entry.patch('/post/:id', lemmeSeeYourTicket, updatePost)
+entry.delete('/post/:id', lemmeSeeYourTicket, deletePost)
+entry.get('/posts', lemmeSeeYourTicket, getPosts)
 
 export default entry;

@@ -8,10 +8,10 @@ import axios from 'axios';
 
 export const MainPage = (e) => {
     const { data } = useContext(PostData);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     console.log(localStorage.getItem('uid'))
-    console.log(data)
-
+    localStorage.getItem("token")
+    console.log(data, "xd")
 
     return (
         <div className="container" >

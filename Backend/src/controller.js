@@ -1,8 +1,13 @@
 import User from './mongoose.js'
 import Jwt from 'jsonwebtoken'
+import bcrypt from "bcrypt"
+
 
 const createUser = async (req, res, next) => {
-    console.log(req.body)
+
+    const hash = bcrypt.hashSync(req.body.password, 7)
+
+    console.log(hash)
 
     if (
         !req.body?.name ||
@@ -13,15 +18,18 @@ const createUser = async (req, res, next) => {
             .json({ message: "it includess your whole information" })
         return
     }
-    const createUser = await User.create({ ...req.body });
+    const createUser = await User.create({ ...req.body, password: hash });
+    const token = Jwt.sign(
+        { name: req.body.name, password: req.body.password },
+        process.env.JWT_SECRET || "password",
+        { expiresIn: "132m" },
+    )
     res
         .status(201)
-        .json({ message: 'new user has created', data: createUser })
-        const token = Jwt.sign(
-            {name : req.body.name, password : req.body.password},
-            process.env.JWT_SECRET || "password",
-            { expiresIn : "132m" },
-        )
+        .json({ message: 'new user has created', data: createUser, token })
+
+
+    // console.log(token)
 }
 
 export default createUser;

@@ -8,30 +8,33 @@ export const SignUp = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const [user , setUser] = useState();
+    const [user, setUser] = useState();
 
 
     const createUser = async () => {
         const { data } = await axios.post('http://localhost:6969/user/Create', { name: name, password: password });
         const user = data.data;
+        const token = data.token
         localStorage.setItem('pass', user.password)
+        localStorage.setItem('token', token)
         console.log(user)
         if (user !== undefined) {
             navigate('/')
         }
     }
 
-    const getUser = async () => {
-        const res = await axios.post("http://localhost:6969/user/create");
-        console.log(res.data);
-        setUser(res.data.data);
-        // localStorage.setItem("User", user)
-        console.log(user)
-    }
+    // const getUser = async () => {
+    //     const res = await axios.post("http://localhost:6969/user/create");
+    //     console.log(res.data);
+    //     setUser(res.data.data);
+    //     // localStorage.setItem("User", user)
+    //     console.log(user.ticket)
+    //     console.log("lol")
+    // }
 
-    useEffect(() =>{
-        getUser();
-    }, [])
+    // useEffect(() =>{
+    //     getUser();
+    // }, [])
 
 
     return (
