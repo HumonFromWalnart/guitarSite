@@ -15,8 +15,10 @@ import jwt from 'jsonwebtoken'
 
 const lemmeSeeYourTicket = (req, res, next) => {
 
-    if (req.body.token) {
-        jwt.verify(req.body.token, process.env.JWT_SECRET || "password", (err, result) => {
+    if (req.headers.token) {
+        console.log(req.headers.token)
+        jwt.verify(req.headers.token, process.env.JWT_SECRET || "password", (err, result) => {
+            console.log(err)
             if (err) res.status(400).send("no ticket no entry ma boi")
             else next();
         })

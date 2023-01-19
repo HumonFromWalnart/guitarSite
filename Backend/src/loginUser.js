@@ -1,4 +1,4 @@
-import User from "./mongoose.js";
+import User from "./userModel.js";
 import jwt from "jsonwebtoken"
 
 const loginUser = async (req, res) => {
@@ -14,7 +14,7 @@ const loginUser = async (req, res) => {
             { expiresIn: "132m" },
         )
         res.status(200).json({
-            message: "Get off, you bloody theif",
+            message: `You're logged in as ${user.name}`,
             data: user,
             token
         })
@@ -26,7 +26,7 @@ const loginUser = async (req, res) => {
 }
 
 export default loginUser;
-// import User from './mongoose.js'
+// import User from './userModel.js'
 
 // const loginUser = async (req, res, next) => {
 

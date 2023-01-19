@@ -1,4 +1,4 @@
-import User from './mongoose.js'
+import User from './userModel.js'
 import Jwt from 'jsonwebtoken'
 import bcrypt from "bcrypt"
 
@@ -11,19 +11,24 @@ const createUser = async (req, res, next) => {
 
     if (
         !req.body?.name ||
-        !req.body?.password
+        !req.body?.password ||
+        !req.body?.email || 
+        !req.body?.role 
     ) {
         res
             .status(400)
             .json({ message: "it includess your whole information" })
         return
     }
-    const createUser = await User.create({ ...req.body, password: hash });
+    const createUser = await User.create({ ...req.body, password: hash, });
+
+
     const token = Jwt.sign(
         { name: req.body.name, password: req.body.password },
         process.env.JWT_SECRET || "password",
         { expiresIn: "132m" },
     )
+
     res
         .status(201)
         .json({ message: 'new user has created', data: createUser, token })

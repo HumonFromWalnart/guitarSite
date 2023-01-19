@@ -5,6 +5,7 @@ import { MainPage } from './mainPage.js';
 import Source from './mainSource.js';
 import SignUp from './signUp.js'
 import LogIn from './logIn.js'
+import { CreatePost } from './createPost.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,9 +13,10 @@ root.render(
         <BrowserRouter>
             <Source>
                 <Routes>
-                    <Route path={'/'} element={<MainPage />} />
-                    <Route path={'/SignUp'} element={<SignUp/>} />
+                    <Route path={'/'} element={<MainPage />}/>
+                    <Route path={'/SignUp'} element={<SignUp />} />
                     <Route path={'/LogIn'} element={<LogIn />} />
+                    <Route path={'/createPost'} element={<CreatePost />} />
                 </Routes>
             </Source>
         </BrowserRouter>

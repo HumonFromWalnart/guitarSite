@@ -1,18 +1,26 @@
 import Post from './postModel.js'
+import User from './userModel.js';
 
 const createPost = async (req, res, next) => {
-    // 3
-    // if (
-    //     !req.body.guitar
-    // ) {
-    //     res
-    //         .status(400)
-    //         .json({ message: "no guitar?" })
-    // }
-    const createPost = await Post.create({ ...req.body })
-    res
-        .status(201)
-        .json({ message: 'new post has created', data: createPost })
+
+    const { userId } = req.body;
+    const user = await User.findOne({ userId });
+    console.log(userId)
+    if (
+        !req.body?.title ||
+        !req.body?.file ||
+        !req.body?.description
+    ) {
+        res
+            .status(401)
+            .json({ message: "make dull post you idiot" })
+    } else {
+
+        const createPost = await Post.create({ ...req.body, creater: userId })
+        res
+            .status(201)
+            .json({ message: 'new post has created', data: createPost })
+    }
 }
 
 export default createPost;

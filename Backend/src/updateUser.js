@@ -1,4 +1,4 @@
-import User from "./mongoose.js";
+import User from "./userModel.js";
 
 const updateUser = async (req, res) => {
     const { id } = req.params;

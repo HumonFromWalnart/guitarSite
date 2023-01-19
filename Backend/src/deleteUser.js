@@ -1,4 +1,4 @@
-import User from "./mongoose.js";
+import User from "./userModel.js";
 
 const deleteUser = async (req, res) => {
     const {firstName} = req.params;

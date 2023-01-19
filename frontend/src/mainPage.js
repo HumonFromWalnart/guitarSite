@@ -7,16 +7,16 @@ import LikeButton from './likeButton';
 import axios from 'axios';
 
 export const MainPage = (e) => {
-    const { data } = useContext(PostData);
+    const { postData } = useContext(PostData);
     const navigate = useNavigate();
     console.log(localStorage.getItem('uid'))
-    localStorage.getItem("token")
-    console.log(data, "xd")
+    localStorage.getItem("token");
+    console.log(postData)
 
     return (
         <div className="container" >
             {
-                data.map((cur) =>
+                postData.map((cur) =>
                     <div className="guitarContainer">
                         <img src={cur.picture} id="picture"></img>
                         <p>{cur.name}</p>

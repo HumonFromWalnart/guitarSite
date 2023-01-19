@@ -1,23 +1,28 @@
 import axios from 'axios'
 import React, { createContext, useEffect, useState } from "react";
+import { instance } from './axiosSrc';
 
 export const PostData = createContext();
 
 const Source = ({ children }) => {
-  const [data, setData] = useState([]);
-
-  const getData = async () => {
-    const res = await axios.get("http://localhost:6969/posts");
-    console.log(res.data);
-    setData(res.data.data);
-  }
+  const [postData, setPostData] = useState([]);
+  const [usersData, setUsersData] = useState([]);
+  
 
   useEffect(() => {
-    getData();
+    const postData = async () => {
+      const res = await instance.get("posts");
+      console.log(res.data);
+      setPostData(res.data.data);
+      const use = await instance.get("users");
+      console.log(use.data);
+      setUsersData(use.data.data);
+    }
+    postData();
   }, []);
 
   return (
-    <PostData.Provider value={{ data, getData }}>
+    <PostData.Provider value={{ postData, usersData }}>
       {children}
     </PostData.Provider>
   );

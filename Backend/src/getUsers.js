@@ -1,4 +1,4 @@
-import User from "./mongoose.js";
+import User from "./userModel.js";
 
 const getUsers = async (req, res) => {
     try {

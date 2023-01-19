@@ -5,7 +5,8 @@ const PostSchema = new Schema({
     name: String,
     picture: String,
     description: String,
-    like: Number
+    like: Number,
+    creater: [{ type: Schema.Types.ObjectId, ref: 'User' }]
     // }
 }, { versionKey: false });
 
