@@ -1,5 +1,6 @@
 import User from "./userModel.js";
 import jwt from "jsonwebtoken"
+import bcrypt from 'bcrypt'
 
 const loginUser = async (req, res) => {
 
@@ -7,17 +8,25 @@ const loginUser = async (req, res) => {
 
     try {
         const user = await User.findOne({ name });
+        const result = bcrypt.compare(password, user.password)
         console.log(user)
+
         const token = jwt.sign(
             { name: req.body.name, password: req.body.password },
             process.env.JWT_SECRET || "password",
             { expiresIn: "132m" },
         )
-        res.status(200).json({
-            message: `You're logged in as ${user.name}`,
-            data: user,
-            token
+        if (result) {
+            res.status(200).json({
+                message: `You're logged in as ${user.name}`,
+                data: user,
+                token
+            })
+        }
+        else res.status(401).json({
+            message: "Get off! You bloody thief!"
         })
+
 
     } catch (err) {
         console.log(err);

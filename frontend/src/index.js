@@ -6,14 +6,16 @@ import Source from './mainSource.js';
 import SignUp from './signUp.js'
 import LogIn from './logIn.js'
 import { CreatePost } from './createPost.js';
+import { Params } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
     <React.StrictMode>
         <BrowserRouter>
             <Source>
                 <Routes>
-                    <Route path={'/'} element={<MainPage />}/>
+                    <Route path={'/posts'} element={<MainPage />}/>
                     <Route path={'/SignUp'} element={<SignUp />} />
                     <Route path={'/LogIn'} element={<LogIn />} />
                     <Route path={'/createPost'} element={<CreatePost />} />

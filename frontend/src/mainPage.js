@@ -8,6 +8,7 @@ import axios from 'axios';
 
 export const MainPage = (e) => {
     const { postData } = useContext(PostData);
+    console.log(postData)
     const navigate = useNavigate();
     console.log(localStorage.getItem('uid'))
     localStorage.getItem("token");
@@ -16,7 +17,7 @@ export const MainPage = (e) => {
     return (
         <div className="container" >
             {
-                postData.map((cur) =>
+                postData?.map((cur) =>
                     <div className="guitarContainer">
                         <img src={cur.picture} id="picture"></img>
                         <p>{cur.name}</p>

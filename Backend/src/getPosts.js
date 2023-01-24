@@ -1,14 +1,11 @@
 import PostModel from './postModel.js'
 
 const getPosts = async (req, res) => {
+
+    const { skip } = req.query;
+
     try {
-        const posts = await PostModel.find();
-        // if(posts.length == 1){
-        //     res.json({message: "Friendly threat detected", data : posts})
-        //     return;
-        // }
-        console.log('hi')
-        
+        const posts = await PostModel.find({}).skip(skip).populate('creater');
         res.status(200).json({
             message: "Friendly threats detected",
             data: posts

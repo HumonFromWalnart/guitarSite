@@ -5,7 +5,7 @@ import bcrypt from "bcrypt"
 
 const createUser = async (req, res, next) => {
 
-    const hash = bcrypt.hashSync(req.body.password, 7)
+   const hash = bcrypt.hashSync(req.body.password, 7)
 
     console.log(hash)
 

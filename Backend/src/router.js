@@ -29,7 +29,6 @@ const lemmeSeeYourTicket = (req, res, next) => {
 }
 const entry = express.Router();
 
-
 // entry.get('/user/:name', getUserByUsername)
 entry.post('/user/create', createUser)
 entry.post('/user/login', loginUser)
@@ -41,6 +40,6 @@ entry.post('/post', lemmeSeeYourTicket, createPost)
 entry.get('/post/:id', lemmeSeeYourTicket, getPost)
 entry.patch('/post/:id', lemmeSeeYourTicket, updatePost)
 entry.delete('/post/:id', lemmeSeeYourTicket, deletePost)
-entry.get('/posts', lemmeSeeYourTicket, getPosts)
+entry.get(`/posts:skip`, lemmeSeeYourTicket, getPosts)
 
 export default entry;
