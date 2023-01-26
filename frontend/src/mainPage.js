@@ -12,13 +12,13 @@ export const MainPage = (e) => {
 
     const navigate = useNavigate();
 
-    const[page, setPage] = useState(0);
+    const [page, setPage] = useState(0);
 
     console.log(localStorage.getItem('uid'))
     localStorage.getItem("token");
 
     const Add = async () => {
-        navigate(`/?skip=1&limit=1`)
+        const post = await axios.get(`http://localhost:6969/posts`, { skip : skip, limit : limit });
     }
 
     return (
@@ -33,10 +33,11 @@ export const MainPage = (e) => {
                     </div>)
             }
             <div id="page">
-                <div id='page' onClick={Add()}>2</div>
-                <div id='page' onClick={Add()}>3</div>
-                <div id='page' onClick={Add()}>4</div>
-                <div id='page' onClick={Add()}>5</div>
+                <div id='page' onClick={Add}>1</div>
+                {/* <div id='page' onClick={Add}>2</div>
+                <div id='page' onClick={Add}>3</div>
+                <div id='page' onClick={Add}>4</div>
+                <div id='page' onClick={Add}>5</div> */}
             </div>
         </div>
     );
