@@ -1,9 +1,9 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import connect from './src/connect.js';
-import router from './src/router.js';
-import cors from 'cors';
-import dotenv from "dotenv"
+const express= require ('express')
+const bodyParser= require ('body-parser')
+const connect =require  ('./src/connect.js');
+const router =require ('./src/router.js');
+const cors =require ('cors');
+const dotenv =require("dotenv")
 
 dotenv.config();
 console.log(process.env);
@@ -18,4 +18,4 @@ app.listen(port, () => {
     console.log(`<${port}> Another successfull seizure!`);
 });
 
-export default app;
+module.exports = app;

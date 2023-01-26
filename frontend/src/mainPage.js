@@ -9,10 +9,17 @@ import axios from 'axios';
 export const MainPage = (e) => {
     const { postData } = useContext(PostData);
     console.log(postData)
+
     const navigate = useNavigate();
+
+    const[page, setPage] = useState(0);
+
     console.log(localStorage.getItem('uid'))
     localStorage.getItem("token");
-    console.log(postData)
+
+    const Add = async () => {
+        navigate(`/?skip=1&limit=1`)
+    }
 
     return (
         <div className="container" >
@@ -25,6 +32,12 @@ export const MainPage = (e) => {
                         <LikeButton id={cur._id} like={cur.like} />
                     </div>)
             }
+            <div id="page">
+                <div id='page' onClick={Add()}>2</div>
+                <div id='page' onClick={Add()}>3</div>
+                <div id='page' onClick={Add()}>4</div>
+                <div id='page' onClick={Add()}>5</div>
+            </div>
         </div>
     );
 }

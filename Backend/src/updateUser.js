@@ -1,4 +1,4 @@
-import User from "./userModel.js";
+const User = require("./userModel.js");
 
 const updateUser = async (req, res) => {
     const { id } = req.params;
@@ -16,4 +16,4 @@ const updateUser = async (req, res) => {
     }
 }
 
-export default updateUser;
+module.exports = updateUser;

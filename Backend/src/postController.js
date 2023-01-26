@@ -1,5 +1,5 @@
-import Post from './postModel.js'
-import User from './userModel.js';
+const Post = require('./postModel.js');
+const User = require('./userModel.js');
 
 const createPost = async (req, res, next) => {
 
@@ -23,4 +23,4 @@ const createPost = async (req, res, next) => {
     }
 }
 
-export default createPost;
+module.exports = createPost;

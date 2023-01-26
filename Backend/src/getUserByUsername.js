@@ -1,4 +1,4 @@
-import User from "./userModel.js";
+const User= require ( "./userModel.js");
 
 const getUserByUsername = async (req, res) => {
     const { firstName } = req.params;
@@ -15,4 +15,4 @@ const getUserByUsername = async (req, res) => {
     }
 }
 
-export default getUserByUsername;
+module.exports = getUserByUsername;

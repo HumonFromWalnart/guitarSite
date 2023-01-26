@@ -1,4 +1,5 @@
-import Post from "./postModel.js";
+const { update } = require("./postModel.js");
+const Post = require ("./postModel.js");
 
 const updatePost = async (req, res) => {
     const { id } = req.params;
@@ -17,4 +18,4 @@ const updatePost = async (req, res) => {
     }
 }
 
-export default updatePost;
+module.exports = updatePost;

@@ -1,6 +1,6 @@
-import User from './userModel.js'
-import Jwt from 'jsonwebtoken'
-import bcrypt from "bcrypt"
+constUser= require  ('./userModel.js')
+constJwt =require  ('jsonwebtoken')
+constbcrypt =require  ("bcrypt")
 
 
 const createUser = async (req, res, next) => {
@@ -37,4 +37,4 @@ const createUser = async (req, res, next) => {
     // console.log(token)
 }
 
-export default createUser;
+module.exports = createUser;

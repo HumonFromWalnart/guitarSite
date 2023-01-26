@@ -1,4 +1,4 @@
-import User from "./userModel.js";
+const User = require("./userModel.js");
 
 const getUser = async (req, res) => {
     const { id } = req.params;
@@ -15,4 +15,4 @@ const getUser = async (req, res) => {
     }
 }
 
-export default getUser;
+module.exports = getUser;

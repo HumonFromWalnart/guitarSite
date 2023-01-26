@@ -1,11 +1,10 @@
-import PostModel from './postModel.js'
+const PostModel= require  ('./postModel.js')
 
 const getPosts = async (req, res) => {
 
-    const { skip } = req.query;
-
-    console.log(skip);
-
+    const skip = req.query.skip;
+    
+    // let articles = await Article.findAll().paginate({page: page, limit: limit}).exec();
     try {
         const posts = await PostModel.find({}).skip(skip).populate('creater');
         res.status(200).json({
@@ -17,4 +16,4 @@ const getPosts = async (req, res) => {
     }
 }
 
-export default getPosts;
+module.exports = getPosts;

@@ -1,6 +1,6 @@
-import User from "./userModel.js";
-import jwt from "jsonwebtoken"
-import bcrypt from 'bcrypt'
+const User = require  ("./userModel.js");
+const jwt= require  ("jsonwebtoken")
+const bcrypt =require  ('bcrypt')
 
 const loginUser = async (req, res) => {
 
@@ -8,7 +8,7 @@ const loginUser = async (req, res) => {
 
     try {
         const user = await User.findOne({ name });
-        const result = bcrypt.compare(password, user.password)
+        const result = bcrypt.compare(password, user?.password)
         console.log(user)
 
         const token = jwt.sign(
@@ -34,8 +34,8 @@ const loginUser = async (req, res) => {
     }
 }
 
-export default loginUser;
-// import User from './userModel.js'
+module.exports = loginUser;
+// constUser require './userModel.js'
 
 // const loginUser = async (req, res, next) => {
 

@@ -11,7 +11,7 @@ const Source = ({ children }) => {
 
   useEffect(() => {
     const postData = async () => {
-      const res = await instance.get("/posts:skip:limit");
+      const res = await instance.get("/posts");
       setPostData(res.data.data);
       const use = await instance.get("users");
       setUsersData(use.data.data);

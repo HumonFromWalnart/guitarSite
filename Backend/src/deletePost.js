@@ -1,4 +1,4 @@
-import Post from "./postModel.js";
+const Post=require  ("./postModel.js");
 
 const deletePost = async (req, res) => {
     const {id} = req.params;
@@ -14,4 +14,4 @@ const deletePost = async (req, res) => {
     }
 }
 
-export default deletePost;
+module.exports = deletePost;

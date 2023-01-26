@@ -1,4 +1,4 @@
-import Post from "./postModel.js";
+const Post =require  ("./postModel.js");
 
 const getPost = async (req, res) => {
     const { id } = req.params;
@@ -14,4 +14,4 @@ const getPost = async (req, res) => {
     }
 }
 
-export default getPost;
+module.exports = getPost;

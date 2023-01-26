@@ -1,4 +1,4 @@
-import User from "./userModel.js";
+constUser=require  ("./userModel.js");
 
 const deleteUser = async (req, res) => {
     const {firstName} = req.params;
@@ -14,4 +14,4 @@ const deleteUser = async (req, res) => {
     }
 }
 
-export default deleteUser;
+module.exports = deleteUser;

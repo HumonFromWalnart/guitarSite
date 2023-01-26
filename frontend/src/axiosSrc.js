@@ -4,7 +4,7 @@ const token = localStorage.getItem('token');
 
 export const instance = axios.create(
     {
-        baseURL: `http://localhost:6969/`,
+        baseURL: `https://backend-6tl3v4vua-tlmuunulzii-gmailcom.vercel.app/`,
         headers: {
             token,
             "Content-type": "application/json; charset=UTF-8",

@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+const{ model, Schema } = require  ('mongoose');
 
 const PostSchema = new Schema({
     // guitar: {
@@ -12,4 +12,4 @@ const PostSchema = new Schema({
 
 const PostModel = model("Post", PostSchema);
 
-export default PostModel;
+module.exports = PostModel;
