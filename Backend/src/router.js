@@ -13,7 +13,7 @@ import deletePost from "./deletePost.js";
 import getPosts from "./getPosts.js";
 import jwt from 'jsonwebtoken'
 
-const lemmeSeeYourTicket = (req, res, next) => {
+const middleware = (req, res, next) => {
 
     if (req.headers.token) {
         console.log(req.headers.token)
@@ -32,14 +32,14 @@ const entry = express.Router();
 // entry.get('/user/:name', getUserByUsername)
 entry.post('/user/create', createUser)
 entry.post('/user/login', loginUser)
-entry.get('/users', lemmeSeeYourTicket, getUsers)
-entry.get('/user/:id', lemmeSeeYourTicket, getUser)
-entry.patch('/user/:id', lemmeSeeYourTicket, updateUser)
-entry.delete('/user/:id', lemmeSeeYourTicket, deleteUser)
-entry.post('/post', lemmeSeeYourTicket, createPost)
-entry.get('/post/:id', lemmeSeeYourTicket, getPost)
-entry.patch('/post/:id', lemmeSeeYourTicket, updatePost)
-entry.delete('/post/:id', lemmeSeeYourTicket, deletePost)
-entry.get(`/posts:skip`, lemmeSeeYourTicket, getPosts)
+entry.get('/users', middleware, getUsers)
+entry.get('/user/:id', middleware, getUser)
+entry.patch('/user/:id', middleware, updateUser)
+entry.delete('/user/:id', middleware, deleteUser)
+entry.post('/post', middleware, createPost)
+entry.get('/post/:id', middleware, getPost)
+entry.patch('/post/:id', middleware, updatePost)
+entry.delete('/post/:id', middleware, deletePost)
+entry.get(`/posts:skip`, middleware, getPosts)
 
 export default entry;

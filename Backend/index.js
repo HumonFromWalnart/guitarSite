@@ -13,9 +13,9 @@ const jsonParser = bodyParser.json()
 connect();
 app.use(cors());
 app.use(jsonParser)
-app.use(router),
-    app.listen(port, () => {
-        console.log(`<${port}> Another successfull seizure!`);
-    });
+app.use(router)
+app.listen(port, () => {
+    console.log(`<${port}> Another successfull seizure!`);
+});
 
-
+export default app;

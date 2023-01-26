@@ -4,6 +4,8 @@ const getPosts = async (req, res) => {
 
     const { skip } = req.query;
 
+    console.log(skip);
+
     try {
         const posts = await PostModel.find({}).skip(skip).populate('creater');
         res.status(200).json({
