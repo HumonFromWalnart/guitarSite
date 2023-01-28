@@ -9,8 +9,6 @@ import { instance } from './axiosSrc'
 
 export const MainPage = (e) => {
     
-        <link rel="icon" href="/images/favicon.ico" />
-    
     const navigate = useNavigate();
     const { postData } = useContext(PostData);
     console.log(postData)
