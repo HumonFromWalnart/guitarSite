@@ -1,8 +1,9 @@
-import axios from "axios";
+
 import { useEffect, useState } from "react";
 import './signUp.css'
 import SubmitButton from "./submitButton";
 import { useNavigate } from "react-router-dom";
+import { instance } from "./axiosSrc";
 
 export const LogIn = () => {
     const [name, setName] = useState('');
@@ -10,7 +11,7 @@ export const LogIn = () => {
     const navigate = useNavigate();
 
     const createUser = async () => {
-        const { data } = await axios.post('http://localhost:6969/user/login', { name: name, password: password });
+        const { data } = await instance.post('/user/login', { name: name, password: password });
         const user = data.data;
         const token = data.token;
         console.log(user)
@@ -24,7 +25,6 @@ export const LogIn = () => {
     useEffect(() => {
         localStorage.setItem('nothing', JSON.stringify(name));
     }, [name])
-
 
     return (
         <div className="bigBoiContainer">

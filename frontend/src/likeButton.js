@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import './likeButton.css'
 import axios from "axios";
 import { PostData } from './mainSource';
+import { instance } from './axiosSrc';
 
 export const LikeButton = ({ id, like },) => {
     const [likes, setLikes] = useState(like);
@@ -9,14 +10,14 @@ export const LikeButton = ({ id, like },) => {
 
     const addLike = async () => {
         setLikes(like + 1);
-        const post = await axios.patch(`http://localhost:6969/post/${id}`, { like: like + 1 });
+        const post = await instance.patch(`/post/${id}`, { like: like + 1 });
         getData();
         console.log(likes, like);
     }
 
     const reduceLike = async () => {
         setLikes(like - 1)
-        const post = await axios.patch(`http://localhost:6969/post/${id}`, { like: like - 1 });
+        const post = await instance.patch(`/post/${id}`, { like: like - 1 });
         getData();
         console.log(likes, like);
     }

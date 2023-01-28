@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import './signUp.css'
 import SubmitButton from "./submitButton";
 import { useNavigate } from "react-router-dom";
+import { instance } from "./axiosSrc";
 
 export const SignUp = () => {
     const [name, setName] = useState('');
@@ -12,7 +13,7 @@ export const SignUp = () => {
     const navigate = useNavigate();
 
     const createUser = async () => {
-        const { data } = await axios.post('http://localhost:6969/user/Create', { name: name, password: password, role : role, email : email });
+        const { data } = await instance.post('/user/Create', { name: name, password: password, role : role, email : email });
         const user = data.data;
         const token = data.token
         localStorage.setItem('pass', user.password)

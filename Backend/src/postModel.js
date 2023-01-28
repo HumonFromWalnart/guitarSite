@@ -6,7 +6,7 @@ const PostSchema = new Schema({
     picture: String,
     description: String,
     like: Number,
-    creater: { type: Schema.Types.ObjectId, ref: 'User' }
+    creator: { type: Schema.Types.ObjectId, ref: 'User' }
     // }
 }, { versionKey: false });
 

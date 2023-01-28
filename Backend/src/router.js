@@ -43,6 +43,6 @@ entry.post('/post', middleware, createPost)
 entry.get('/post/:id', middleware, getPost)
 entry.patch('/post/:id', middleware, updatePost)
 entry.delete('/post/:id', middleware, deletePost)
-entry.get(`/posts`, getPosts)
+entry.get(`/posts`, middleware, getPosts)
 
 module.exports = entry;

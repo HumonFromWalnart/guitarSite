@@ -1,4 +1,4 @@
-const Post =require  ("./postModel.js");
+const Post = require  ("./postModel.js");
 
 const getPost = async (req, res) => {
     const { id } = req.params;

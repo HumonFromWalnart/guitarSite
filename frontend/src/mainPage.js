@@ -1,25 +1,32 @@
 import './signUp.css'
 import { PostData } from "./mainSource";
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import './mainPage.css'
 import { useNavigate } from 'react-router';
 import LikeButton from './likeButton';
-import axios from 'axios';
+import { instance } from './axiosSrc'
+
 
 export const MainPage = (e) => {
+    
+        <link rel="icon" href="/images/favicon.ico" />
+    
+    const navigate = useNavigate();
     const { postData } = useContext(PostData);
     console.log(postData)
-
-    const navigate = useNavigate();
-
-    const [page, setPage] = useState(0);
-
-    console.log(localStorage.getItem('uid'))
+    // console.log(localStorage.getItem('uid'))
     localStorage.getItem("token");
+    const [skip, setSkip] = useState(0);
+    const [limit, setLimit] = useState(2);
 
-    const Add = async () => {
-        const post = await axios.get(`http://localhost:6969/posts`, { skip : skip, limit : limit });
+    const navi = async () => {
+        setSkip(skip + 1);
+        console.log(skip, limit);
+        navigate(`?skip=${skip}&limit=${limit}`)
+        const page = await instance.get(`/posts`, { skip: skip, limit: limit });
+        console.log(page)
     }
+
 
     return (
         <div className="container" >
@@ -32,13 +39,8 @@ export const MainPage = (e) => {
                         <LikeButton id={cur._id} like={cur.like} />
                     </div>)
             }
-            <div id="page">
-                <div id='page' onClick={Add}>1</div>
-                {/* <div id='page' onClick={Add}>2</div>
-                <div id='page' onClick={Add}>3</div>
-                <div id='page' onClick={Add}>4</div>
-                <div id='page' onClick={Add}>5</div> */}
-            </div>
+            <button onClick={navi}>1</button>
+
         </div>
     );
 }

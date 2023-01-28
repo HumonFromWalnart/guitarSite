@@ -13,7 +13,7 @@ const Source = ({ children }) => {
     const postData = async () => {
       const res = await instance.get("/posts");
       setPostData(res.data.data);
-      const use = await instance.get("users");
+      const use = await instance.get("/users");
       setUsersData(use.data.data);
     }
     postData();
