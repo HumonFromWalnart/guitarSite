@@ -1,6 +1,6 @@
-const User = require  ("./userModel.js");
-const jwt= require  ("jsonwebtoken")
-const bcrypt =require  ('bcrypt')
+const User = require("./userModel.js");
+const jwt = require("jsonwebtoken")
+const bcrypt = require('bcrypt')
 
 const loginUser = async (req, res) => {
 
@@ -9,7 +9,6 @@ const loginUser = async (req, res) => {
     try {
         const user = await User.findOne({ name });
         const result = bcrypt.compare(password, user?.password)
-        console.log(user)
 
         const token = jwt.sign(
             { name: req.body.name, password: req.body.password },

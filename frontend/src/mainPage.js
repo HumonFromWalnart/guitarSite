@@ -5,26 +5,14 @@ import './mainPage.css'
 import { useNavigate } from 'react-router';
 import LikeButton from './likeButton';
 import { instance } from './axiosSrc'
+import { Button } from './button';
 
 
 export const MainPage = (e) => {
-    
+
     const navigate = useNavigate();
-    const { postData } = useContext(PostData);
-    console.log(postData)
-    // console.log(localStorage.getItem('uid'))
+    const { postData, setSkip, setLimit } = useContext(PostData);
     localStorage.getItem("token");
-    const [skip, setSkip] = useState(0);
-    const [limit, setLimit] = useState(2);
-
-    const navi = async () => {
-        setSkip(skip + 1);
-        console.log(skip, limit);
-        navigate(`?skip=${skip}&limit=${limit}`)
-        const page = await instance.get(`/posts`, { skip: skip, limit: limit });
-        console.log(page)
-    }
-
 
     return (
         <div className="container" >
@@ -37,8 +25,7 @@ export const MainPage = (e) => {
                         <LikeButton id={cur._id} like={cur.like} />
                     </div>)
             }
-            <button onClick={navi}>1</button>
-
+          <Button/>
         </div>
     );
 }

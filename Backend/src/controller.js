@@ -1,19 +1,18 @@
-constUser= require  ('./userModel.js')
-constJwt =require  ('jsonwebtoken')
-constbcrypt =require  ("bcrypt")
+const User = require('./userModel.js')
+const Jwt = require('jsonwebtoken')
+const bcrypt = require("bcrypt")
 
 
 const createUser = async (req, res, next) => {
 
-   const hash = bcrypt.hashSync(req.body.password, 7)
+    const hash = bcrypt.hashSync(req.body.password, 7)
 
-    console.log(hash)
 
     if (
         !req.body?.name ||
         !req.body?.password ||
-        !req.body?.email || 
-        !req.body?.role 
+        !req.body?.email ||
+        !req.body?.role
     ) {
         res
             .status(400)

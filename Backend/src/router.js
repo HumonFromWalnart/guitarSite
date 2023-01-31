@@ -14,11 +14,9 @@ const getPosts = require("./getPosts.js");
 const jwt = require('jsonwebtoken')
 
 const middleware = (req, res, next) => {
-
+    console.log(req.body)
     if (req.headers.token) {
-        console.log(req.headers.token)
         jwt.verify(req.headers.token, process.env.JWT_SECRET || "password", (err, result) => {
-            console.log(err)
             if (err) res.status(400).send("no ticket no entry ma boi")
             else next();
         })
