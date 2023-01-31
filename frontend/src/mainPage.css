@@ -10,21 +10,15 @@ body {
     align-items: center;
 }
 
-#picture {
-    width: 400px;
-    height: 500px;
-}
-
 .guitarContainer {
-    width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: white;
-    padding: 25px;
-    margin: 25px;
+    padding: 15px;
+    margin: 10px;
 }
 
 p {
@@ -32,13 +26,6 @@ p {
     font-size: 20px;
     text-align: center;
     color: black;
-}
-
-#page{
-    font-size: 25px;
-    display: flex;
-    width: 100px;
-    justify-content: space-around;
 }
 
 /* img {

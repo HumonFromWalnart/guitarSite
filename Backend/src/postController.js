@@ -3,20 +3,18 @@ const User = require('./userModel.js');
 
 const createPost = async (req, res, next) => {
 
-    const { userId } = req.body;
-    const user = await User.findOne({ userId });
-    console.log(user)
+    const { id } = req.body;
+    const user = await User.findOne({ id });
+    console.log(id, user) 
     if (
-        !req.body?.title ||
-        !req.body?.file ||
-        !req.body?.description
+        !req.body?.message
     ) {
         res
             .status(401)
             .json({ message: "make dull post you idiot" })
     } else {
 
-        const createPost = await Post.create({ ...req.body, creater: user })
+        const createPost = await Post.create({ ...req.body, creator: user })
         res
             .status(201)
             .json({ message: 'new post has created', data: createPost })

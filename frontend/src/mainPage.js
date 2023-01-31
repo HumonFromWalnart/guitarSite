@@ -19,13 +19,11 @@ export const MainPage = (e) => {
             {
                 postData?.map((cur) =>
                     <div className="guitarContainer">
-                        <img src={cur.picture} id="picture"></img>
-                        <p>{cur.name}</p>
-                        <p>{cur.description}</p>
-                        <LikeButton id={cur._id} like={cur.like} />
+                        <div>{cur.message}</div>
+                        <div>{cur.creator?.name}</div>
                     </div>)
             }
-          <Button/>
+            <Button />
         </div>
     );
 }
