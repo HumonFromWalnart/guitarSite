@@ -25,7 +25,7 @@ const Source = ({ children }) => {
   }, [skip]);
 
   return (
-    <PostData.Provider value={{ postData, usersData, setSkip, setLimit }}>
+    <PostData.Provider value={{ postData, usersData, skip, setSkip, setLimit }}>
       {children}
     </PostData.Provider>
   );

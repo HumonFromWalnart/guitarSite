@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import './signUp.css'
 import SubmitButton from "./submitButton";
 import { useNavigate } from "react-router-dom";
-import { instance } from "./axiosSrc";
+import { instance } from "../src/axiosSrc";
 
 export const LogIn = () => {
     const [name, setName] = useState('');

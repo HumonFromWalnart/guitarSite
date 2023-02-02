@@ -28,6 +28,6 @@ p {
     color: black;
 }
 
-/* img {
-    pointer-events: none;
-} */
+.buttons{
+    display: flex;
+}

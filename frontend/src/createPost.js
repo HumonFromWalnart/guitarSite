@@ -13,6 +13,7 @@ export const CreatePost = () => {
     const userId = localStorage.getItem("uid")
 
     const createPost = async () => {
+        console.log(userId)
         const { data } = await instance.post('/post', { message: message, id: userId });
         const post = data.data;
         if (post !== undefined) {

@@ -17,7 +17,7 @@ const loginUser = async (req, res) => {
         )
         if (result) {
             res.status(200).json({
-                message: `You're logged in as ${user.name}`,
+                message: `You're logged in as ${user}`,
                 data: user,
                 token
             })

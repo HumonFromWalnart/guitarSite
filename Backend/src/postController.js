@@ -4,8 +4,6 @@ const User = require('./userModel.js');
 const createPost = async (req, res, next) => {
 
     const { id } = req.body;
-    const user = await User.findOne({ id });
-    console.log(id, user) 
     if (
         !req.body?.message
     ) {
@@ -14,7 +12,7 @@ const createPost = async (req, res, next) => {
             .json({ message: "make dull post you idiot" })
     } else {
 
-        const createPost = await Post.create({ ...req.body, creator: user })
+        const createPost = await Post.create({ ...req.body, creator: id })
         res
             .status(201)
             .json({ message: 'new post has created', data: createPost })

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router';
 import LikeButton from './likeButton';
 import { instance } from './axiosSrc'
 import { Button } from './button';
+import { ReverseButton } from './gobackbutton';
 
 
 export const MainPage = (e) => {
@@ -13,7 +14,6 @@ export const MainPage = (e) => {
     const navigate = useNavigate();
     const { postData, setSkip, setLimit } = useContext(PostData);
     localStorage.getItem("token");
-
     return (
         <div className="container" >
             {
@@ -23,7 +23,10 @@ export const MainPage = (e) => {
                         <div>{cur.creator?.name}</div>
                     </div>)
             }
-            <Button />
+            <div className='buttons'>
+                <ReverseButton />
+                <Button />
+            </div>
         </div>
     );
 }
