@@ -16,7 +16,7 @@ root.render(
             <Source>
                 <Routes>
                     <Route path={'/posts'} element={<MainPage />}/>
-                    <Route path={'/SignUp'} element={<SignUp />} />
+                    <Route path={'/'} element={<SignUp />} />
                     <Route path={'/LogIn'} element={<LogIn />} />
                     <Route path={'/createPost'} element={<CreatePost />} />
                     {/* <Route path={'/posts'} element={<Test />} /> */}

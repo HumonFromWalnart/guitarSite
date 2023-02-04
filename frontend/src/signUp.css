@@ -2,48 +2,73 @@ body {
     background-color: black;
 }
 
+* {
+    filter: blur(0.2px);
+}
+
 .bigBoiContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    justify-content: center;
+    height: 800px;
 }
 
 .inputContainer {
     display: flex;
     flex-direction: column;
     text-align: center;
+    justify-content: space-between;
 }
 
 #input {
     border: 2px solid rgb(194, 184, 184);
-    height: 50px;
-    width: 500px;
+    width: 200px;
     border-radius: 5px;
-    background-color: rgba(240, 248, 255, 0);
+    background-color: rgba(0, 0, 0, 0.424);
     outline: none;
     color: white;
     font-size: 15px;
 }
 
-#submitButton {
-    border: 2px solid rgb(194, 184, 184);
-    height: 30px;
-    background-color: rgba(250, 235, 215, 0);
-    border-radius: 5px;
-    font-size: 15px;
-    color: white;
+#submitButton:active {
+    transform: translateY(1px);
+    scale: 0.95;
 }
 
 ::placeholder {
     color: rgba(255, 255, 255, 0.738);
 }
 
-.YOUBLOODYTHEIF {
-    font-size: 50px;
-}
-
 .signInContainer {
     display: flex;
     flex-direction: column;
+}
+
+.toLogin {
+    display: flex;
+}
+
+#navigateLink {
+    color: white;
+}
+
+#navigateLink:hover {
+    text-shadow: rgb(255, 255, 255) 1px 1px 5px;
+}
+
+#text {
+    color: white;
+}
+
+.signUp {
+    display: flex;
+}
+
+#toSignUp {
+    color: white;
+}
+
+#toSignUp:hover {
+    text-shadow: 1px 1px 5px white;
 }

@@ -13,19 +13,33 @@ export const MainPage = (e) => {
 
     const navigate = useNavigate();
     const { postData, setSkip, setLimit } = useContext(PostData);
+    // const [pageLimit, setPageLimit] = useState(5);
+    // const[currentPage, setCurrentPage] = useState();
+
     localStorage.getItem("token");
     return (
         <div className="container" >
-            {
-                postData?.map((cur) =>
-                    <div className="guitarContainer">
-                        <div>{cur.message}</div>
-                        <div>{cur.creator?.name}</div>
-                    </div>)
-            }
-            <div className='buttons'>
-                <ReverseButton />
-                <Button />
+            <div className='firstContainer'>
+
+            </div>
+            <div className='secondContainer'>
+                {
+                    postData?.map((cur) =>
+                        <div className="post">
+                            <div className='user'>
+                                <img id='profilePic' src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' />
+                                <div>{cur.creator?.name}</div>
+                            </div>
+                            <div>{cur.message}</div>
+                        </div>)
+                }
+                <div className='buttons'>
+                    <ReverseButton />
+                    <Button />
+                </div>
+            </div>
+            <div className='thirdContainer'>
+                <button id='logOut' onClick={() => navigate('/logIn')}>log out</button>
             </div>
         </div>
     );

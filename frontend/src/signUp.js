@@ -20,7 +20,7 @@ export const SignUp = () => {
         localStorage.setItem("uid", user._id)
         localStorage.setItem("token", token)
         if (user !== undefined) {
-            navigate('/createPost')
+            navigate('/posts')
         }
     }
 
@@ -30,13 +30,17 @@ export const SignUp = () => {
 
     return (
         <div className="bigBoiContainer">
+
+            <div className="toLogin">
+                <div id="text">Already have an account?</div>
+                <div id="navigateLink" onClick={() => navigate('/LogIn')}>Click here</div>
+            </div>
+
             <div className="inputContainer">
                 <input placeholder="Name" type={'text'} id="input" onChange={(e) => setName(e.target.value)} value={name}></input>
                 <input placeholder="Email" type={'text'} id="input" onChange={(e) => setEmail(e.target.value)} value={email}></input>
                 <input placeholder="Role" type={'text'} id="input" onChange={(e) => setRole(e.target.value)} value={role}></input>
                 <input placeholder="Password" type={'text'} id="input" onChange={(e) => setPassword(e.target.value)} value={password}></input>
-            </div>
-            <div>
                 <SubmitButton onClick={createUser} />
             </div>
         </div>

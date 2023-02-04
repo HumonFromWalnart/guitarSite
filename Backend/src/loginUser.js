@@ -8,7 +8,9 @@ const loginUser = async (req, res) => {
 
     try {
         const user = await User.findOne({ name });
-        const result = bcrypt.compare(password, user?.password)
+        const result = bcrypt.compare(password, user?.password, function(err, result) {
+            console.log(err, result)
+        })
 
         const token = jwt.sign(
             { name: req.body.name, password: req.body.password },
@@ -17,7 +19,7 @@ const loginUser = async (req, res) => {
         )
         if (result) {
             res.status(200).json({
-                message: `You're logged in as ${user}`,
+                message: `You're logged in`,
                 data: user,
                 token
             })

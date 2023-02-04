@@ -18,7 +18,7 @@ export const LogIn = () => {
         localStorage.setItem("uid", user._id)
         localStorage.setItem("token", token)
         if (user !== undefined) {
-            navigate('/createPost')
+            navigate('/posts')
         }
     }
 
@@ -28,6 +28,10 @@ export const LogIn = () => {
 
     return (
         <div className="bigBoiContainer">
+            <div className="signUp">
+                <div id="text">no account?</div>
+                <div id='toSignUp' onClick={() => navigate('/')}>click here</div>
+            </div>
             <div className="inputContainer">
                 <input placeholder="Name" type={'text'} id="input" onChange={(e) => setName(e.target.value)} value={name}></input>
                 <input placeholder="Password" type={'text'} id="input" onChange={(e) => setPassword(e.target.value)} value={password}></input>
