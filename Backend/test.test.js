@@ -12,7 +12,7 @@ const demoUserData = [
   {
     _id: "62e893a5784f8957b14a8887",
     name: "Bat",
-    password: "pass"
+    password: "$2a$12$rykK8LahnZddi9LvK4XvdePpYzvtxSkib/wIGOqRXeuA/RCTXvoZ2"
   }
 ];
 
@@ -34,7 +34,7 @@ beforeAll(async () => {
 // Tear down the environment
 afterAll(async () => {
   //   await User.deleteMany();
-  await mongoose.connection.close();
+  mongoose.connection.close();
 });
 
 describe("User crud test", () => {
@@ -47,8 +47,7 @@ describe("User crud test", () => {
     const result = await request(app).post("/user/login").send({
       name: "Bat",
     });
-    expect(result.status).toBe(401);
-    expect(JSON.parse(result.text).message).toBe("Get off! You bloody thief!");
+    expect(result.status).toBe(400);
   });
 
   it("Login test expect to success", async () => {

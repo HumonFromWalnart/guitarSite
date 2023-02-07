@@ -7,8 +7,6 @@ import LikeButton from './likeButton';
 import { instance } from './axiosSrc'
 import { Button } from './button';
 import { ReverseButton } from './gobackbutton';
-
-
 export const MainPage = (e) => {
 
     const navigate = useNavigate();
@@ -23,6 +21,7 @@ export const MainPage = (e) => {
 
             </div>
             <div className='secondContainer'>
+                <button onClick={() => navigate('/createPost')}>post comment</button>
                 {
                     postData?.map((cur) =>
                         <div className="post">
