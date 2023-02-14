@@ -34,7 +34,7 @@ export const LogIn = () => {
             </div>
             <div className="inputContainer">
                 <input placeholder="Name" type={'text'} id="input" onChange={(e) => setName(e.target.value)} value={name}></input>
-                <input placeholder="Password" type={'text'} id="input" onChange={(e) => setPassword(e.target.value)} value={password}></input>
+                <input placeholder="Password" type={'password'} id="input" onChange={(e) => setPassword(e.target.value)} value={password}></input>
             </div>
             <div>
                 <SubmitButton onClick={createUser} />

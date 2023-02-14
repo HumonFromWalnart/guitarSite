@@ -12,20 +12,21 @@ const Source = ({ children }) => {
   const [skip, setSkip] = useState(0);
   const [limit, setLimit] = useState(10);
 
+  const getPostData = async () => {
+    const res = await instance.get(`/posts?skip=${skip}&limit=${limit}`);
+    console.log(res)
+    setPostData(res.data.data);
+    const use = await instance.get("/users");
+    setUsersData(use.data.data);
+  }
+
   useEffect(() => {
     console.log(skip, limit)
-    const postData = async () => {
-      const res = await instance.get(`/posts?skip=${skip}&limit=${limit}`);
-      console.log(res)
-      setPostData(res.data.data);
-      const use = await instance.get("/users");
-      setUsersData(use.data.data);
-    }
-    postData();
+    getPostData();
   }, [skip]);
 
   return (
-    <PostData.Provider value={{ postData, usersData, skip, setSkip, setLimit }}>
+    <PostData.Provider value={{ postData, usersData, skip, setSkip, setLimit, refresh: getPostData }}>
       {children}
     </PostData.Provider>
   );

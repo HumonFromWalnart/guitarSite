@@ -1,26 +1,33 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import './signUp.css'
 import SubmitButton from "./submitButton";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../src/axiosSrc";
+import { Input } from "./input";
 
 export const SignUp = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    const [rePassword, setRePassword] = useState('');
+    const ref = useRef();
     const [email, setEmail] = useState('');
-    const [role, setRole] = useState('');
     const navigate = useNavigate();
 
     const createUser = async () => {
-        const { data } = await instance.post('/user/create', { name: name, password: password, email: email, role: role });
-        const user = data.data;
-        const token = data.token;
-        console.log(user)
-        localStorage.setItem("uid", user._id)
-        localStorage.setItem("token", token)
-        if (user !== undefined) {
-            navigate('/posts')
+        if (rePassword == password) {
+            const { data } = await instance.post('/user/create', { name: name, password: password, email: email });
+            const user = data.data;
+            const token = data.token;
+            console.log(user)
+            localStorage.setItem("uid", user._id)
+            localStorage.setItem("token", token)
+            if (user !== undefined) {
+                navigate('/posts')
+            }
+        } else {
+            setPassword('does not match you idiot')
+            setRePassword('does not match you idiot')
         }
     }
 
@@ -37,10 +44,40 @@ export const SignUp = () => {
             </div>
 
             <div className="inputContainer">
-                <input placeholder="Name" type={'text'} id="input" onChange={(e) => setName(e.target.value)} value={name}></input>
-                <input placeholder="Email" type={'text'} id="input" onChange={(e) => setEmail(e.target.value)} value={email}></input>
-                <input placeholder="Role" type={'text'} id="input" onChange={(e) => setRole(e.target.value)} value={role}></input>
-                <input placeholder="Password" type={'text'} id="input" onChange={(e) => setPassword(e.target.value)} value={password}></input>
+                <Input
+                    placeholder={'name'}
+                    type={'text'}
+                    id={'input'}
+                    onChange={(e) => setName(e.target.value)}
+                    value={name}
+                    onClick={() => setName('')}
+                />
+                <Input
+                    placeholder={'email'}
+                    type={'text'}
+                    id={'input'}
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    onClick={() => setEmail('')}
+                />
+                <Input
+                    placeholder={'password'}
+                    type={'password'}
+                    id={'input'}
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    onClick={() => setPassword('')}
+                    ref={ref}
+                />
+                <Input
+                    placeholder={'re-enter password'}
+                    type={'password'}
+                    id={'input'}
+                    onChange={(e) => setRePassword(e.target.value)}
+                    value={rePassword}
+                    onClick={() => setRePassword('')}
+                    ref={ref}
+                />
                 <SubmitButton onClick={createUser} />
             </div>
         </div>

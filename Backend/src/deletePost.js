@@ -1,7 +1,8 @@
-const Post=require  ("./postModel.js");
+const Post = require("./postModel.js");
 
 const deletePost = async (req, res) => {
-    const {id} = req.params;
+    const { id } = req.params;
+    // const { postId } = req.body;
     try {
         const deleted = await Post.findOneAndDelete(id);
         res.status(200).json({

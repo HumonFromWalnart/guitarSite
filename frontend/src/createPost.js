@@ -1,11 +1,13 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import SubmitButton from "./submitButton";
 import { useNavigate } from "react-router-dom";
 import { instance } from "./axiosSrc";
+import { PostData } from "./mainSource";
 
 export const CreatePost = () => {
     const [message, setTitle] = useState('');
+    const { refresh } = useContext(PostData);
     const [file, setFile] = useState('');
     const [description, setDescription] = useState('');
     const [like, setLike] = useState(0);
@@ -14,9 +16,11 @@ export const CreatePost = () => {
 
     const createPost = async () => {
         console.log(userId)
-        const { data } = await instance.post('/post', { message: message, id: userId });
+        const { data } = await instance.post('/createPost', { message: message, id: userId });
         const post = data.data;
         if (post !== undefined) {
+            await refresh()
+
             navigate('/posts')
         }
     }

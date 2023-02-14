@@ -11,8 +11,7 @@ const createUser = async (req, res, next) => {
     if (
         !req.body?.name ||
         !req.body?.password ||
-        !req.body?.email ||
-        !req.body?.role
+        !req.body?.email 
     ) {
         res
             .status(400)

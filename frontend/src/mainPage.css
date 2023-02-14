@@ -62,8 +62,6 @@ p {
 .user {
     display: flex;
     align-items: center;
-    width: 90px;
-    justify-content: space-between;
     margin: 3px;
 }
 
@@ -73,4 +71,8 @@ p {
     font-size: 15px;
     width: 100px;
     margin: 10px;
+}
+
+#userName{
+    margin-left: 5px;
 }
