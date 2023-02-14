@@ -4,7 +4,6 @@ import './signUp.css'
 import SubmitButton from "./submitButton";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../src/axiosSrc";
-import { Input } from "./input";
 
 export const SignUp = () => {
     const [name, setName] = useState('');
@@ -26,6 +25,7 @@ export const SignUp = () => {
                 navigate('/posts')
             }
         } else {
+            alert("Does not match you idiot")
             setPassword('does not match you idiot')
             setRePassword('does not match you idiot')
         }
@@ -44,35 +44,35 @@ export const SignUp = () => {
             </div>
 
             <div className="inputContainer">
-                <Input
-                    placeholder={'name'}
-                    type={'text'}
-                    id={'input'}
+                <input
+                    placeholder='name'
+                    type='text'
+                    id='input'
                     onChange={(e) => setName(e.target.value)}
                     value={name}
                     onClick={() => setName('')}
                 />
-                <Input
-                    placeholder={'email'}
-                    type={'text'}
-                    id={'input'}
+                <input
+                    placeholder='email'
+                    type='text'
+                    id='input'
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                     onClick={() => setEmail('')}
                 />
-                <Input
-                    placeholder={'password'}
-                    type={'password'}
-                    id={'input'}
+                <input
+                    placeholder='password'
+                    type='password'
+                    id='input'
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
                     onClick={() => setPassword('')}
                     ref={ref}
                 />
-                <Input
-                    placeholder={'re-enter password'}
-                    type={'password'}
-                    id={'input'}
+                <input
+                    placeholder='re-enter password'
+                    type='password'
+                    id='input'
                     onChange={(e) => setRePassword(e.target.value)}
                     value={rePassword}
                     onClick={() => setRePassword('')}
