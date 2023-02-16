@@ -11,8 +11,14 @@ export const MainPage = (e) => {
 
     const navigate = useNavigate();
     const { postData, setSkip, setLimit } = useContext(PostData);
-
     localStorage.getItem("token");
+
+    // {
+    //     postData.map((cur) => {
+    //         console.log(cur.image)
+    //     })
+    // }
+    
     return (
         <div className="container" >
             <div className='firstContainer'>
@@ -27,6 +33,7 @@ export const MainPage = (e) => {
                                 <img id='profilePic' src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' />
                                 <div id='userName'>{cur.creator?.name}</div>
                             </div>
+                            <img src={cur.image}></img>
                             <div>{cur.message}</div>
                             {/* <Delete onClick={()=> {localStorage.setItem("postId", cur._id)}}/> */}
                             <Delete postId={cur._id} />

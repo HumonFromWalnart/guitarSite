@@ -10,8 +10,20 @@ export const SignUp = () => {
     const [password, setPassword] = useState('');
     const [rePassword, setRePassword] = useState('');
     const ref = useRef();
+    const pass = useRef();
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
+    const passRespond = [
+        'does not match',
+        'its not matching',
+        'your passwords does not match',
+        'they are not matching',
+        'do you have dementia?',
+        `what's wrong with you`,
+    ];
+    const getRandomInt = (max) => {
+        return Math.floor(Math.random() * max);
+    }
 
     const createUser = async () => {
         if (rePassword == password) {
@@ -25,9 +37,15 @@ export const SignUp = () => {
                 navigate('/posts')
             }
         } else {
-            alert("Does not match you idiot")
-            setPassword('does not match you idiot')
-            setRePassword('does not match you idiot')
+            ref.current.type = "text"
+            pass.current.type = "text"
+            setTimeout(() => {
+                ref.current.type = "password"
+                pass.current.type = "password"
+            }, 1000);
+            setPassword(passRespond[getRandomInt(6)])
+            setRePassword(passRespond[getRandomInt(6)])
+            console.log("passwords didn't match!")
         }
     }
 
@@ -67,7 +85,7 @@ export const SignUp = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
                     onClick={() => setPassword('')}
-                    ref={ref}
+                    ref={pass}
                 />
                 <input
                     placeholder='re-enter password'

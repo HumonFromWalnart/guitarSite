@@ -6,7 +6,7 @@ const deletePost = async (req, res) => {
     try {
         const deleted = await Post.findOneAndDelete(id);
         res.status(200).json({
-            message: `User with ${id} id got deleted`,
+            message: `Post with ${id} id got deleted`,
             data: deleted
         })
     } catch (err) {

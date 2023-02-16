@@ -19,7 +19,7 @@ root.render(
                     <Route path={'/'} element={<SignUp />} />
                     <Route path={'/LogIn'} element={<LogIn />} />
                     <Route path={'/createPost'} element={<CreatePost />} />
-                    {/* <Route path={'/posts'} element={<Test />} /> */}
+                    <Route path={'/test'} element={<Test />} />
                 </Routes>
             </Source>
         </BrowserRouter>

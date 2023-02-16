@@ -15,14 +15,15 @@ const jwt = require('jsonwebtoken')
 
 const middleware = (req, res, next) => {
     console.log(req.body)
-    if (req.headers.token) {
-        jwt.verify(req.headers.token, process.env.JWT_SECRET || "password", (err, result) => {
-            if (err) res.status(400).send("no ticket no entry ma boi")
-            else next();
-        })
-    } else {
-        res.status(403).send("no ticket no entry ma boi")
-    }
+    next();
+    // if (req.headers.token) {
+    //     jwt.verify(req.headers.token, process.env.JWT_SECRET || "password", (err, result) => {
+    //         if (err) res.status(400).send("no ticket no entry ma boi")
+    //         else next();
+    //     })
+    // } else {
+    //     res.status(403).send("no ticket no entry ma boi")
+    // }
 
 }
 const entry = express.Router();

@@ -3,26 +3,17 @@ import { useContext } from "react";
 import { PostData } from "./mainSource";
 
 const Test = () => {
-    const navigation = useNavigate()
+    // Define the string
+    var defualt = 'Hello World!';
 
-    const { usersData } = useContext(PostData);
-    // const { id } = useParams();
+    // Encode the String
+    var encodedStringBtoA = btoa(defualt);
 
-    return (
-        <div>
-            {
-                usersData?.map((cur) => {
-                    return (
-                        <>
-                            <div>{cur.name}</div>
-                            <button onClick={() => navigation(`/${cur._id}`)}>asd</button>
-                        </>
-                    );
-                })
-            }
+    var decodedStringAtoB = atob(encodedStringBtoA);
 
-        </div>
-    )
+    console.log(encodedStringBtoA);
+    console.log(decodedStringAtoB);
+
 }
 
 export default Test;

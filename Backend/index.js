@@ -9,7 +9,7 @@ dotenv.config();
 console.log(process.env);
 const port = process.env.PORT;
 const app = express();
-const jsonParser = bodyParser.json()
+const jsonParser = bodyParser.json({limit: '10000kb'})
 connect();
 app.use(cors());
 app.use(jsonParser)

@@ -31,6 +31,16 @@ body {
     font-size: 15px;
 }
 
+#fileInput {
+    border: 2px solid rgb(194, 184, 184);
+    width: 200px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.424);
+    outline: none;
+    color: white;
+    font-size: 15px;
+}
+
 #submitButton:active {
     transform: translateY(1px);
     scale: 0.95;

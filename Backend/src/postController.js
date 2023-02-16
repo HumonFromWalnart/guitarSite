@@ -12,7 +12,7 @@ const createPost = async (req, res, next) => {
             .json({ message: "make dull post you idiot" })
     } else {
 
-        const createPost = await Post.create({ ...req.body, creator: id })
+        const createPost = await Post.create({ ...req.body, creator: id, })
         res
             .status(201)
             .json({ message: 'new post has created', data: createPost })
