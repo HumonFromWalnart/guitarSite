@@ -7,6 +7,7 @@ import SignUp from './signUp.js'
 import LogIn from './logIn.js'
 import { CreatePost } from './createPost.js';
 import Test from './testParam.js';
+import { Profile } from './profile.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -20,6 +21,7 @@ root.render(
                     <Route path={'/LogIn'} element={<LogIn />} />
                     <Route path={'/createPost'} element={<CreatePost />} />
                     <Route path={'/test'} element={<Test />} />
+                    <Route path={'/posts/:id'} element={<Profile />} />
                 </Routes>
             </Source>
         </BrowserRouter>

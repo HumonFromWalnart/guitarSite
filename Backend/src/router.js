@@ -18,13 +18,12 @@ const middleware = (req, res, next) => {
     next();
     // if (req.headers.token) {
     //     jwt.verify(req.headers.token, process.env.JWT_SECRET || "password", (err, result) => {
-    //         if (err) res.status(400).send("no ticket no entry ma boi")
+    //         if (err) res.status(403).send("you are not authenticated")
     //         else next();
     //     })
     // } else {
-    //     res.status(403).send("no ticket no entry ma boi")
+    //     res.status(401).send("you need token to do dis")
     // }
-
 }
 const entry = express.Router();
 

@@ -1,11 +1,12 @@
 import { forwardRef } from "react";
 
 export const Input = forwardRef((props, ref) => {
-    const { placeholder, type, id, value, onClick, onChange, borderColor = 'none' } = props;
+    const { placeholder, type, id, value, onClick, onChange, borderColor = 'none', name } = props;
     return (
         <input
-            id={id}
+            id="input"
             ref={ref}
+            name={name}
             type={type}
             value={value}
             style={{ borderColor }}

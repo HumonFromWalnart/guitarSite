@@ -40,7 +40,6 @@ body {
     background-color: rgba(255, 255, 255, 0.944);
     padding: 5px;
     margin: 10px;
-    width: 200px;
 }
 
 p {
@@ -73,6 +72,11 @@ p {
     margin: 10px;
 }
 
-#userName{
+#userName {
     margin-left: 5px;
+}
+
+#postImg {
+    width: 300px;
+    height: 300px;
 }

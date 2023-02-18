@@ -5,11 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { instance } from "./axiosSrc";
 import { PostData } from "./mainSource";
 
-export const CreatePost = () => {
-    const [message, setMessage] = useState('');
+export const Profile = () => {
     const { refresh } = useContext(PostData);
     const navigate = useNavigate();
-    const userId = localStorage.getItem("uid")
+    const { usersData } = useContext(PostData);
 
     const toBase64 = file => new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -27,9 +26,9 @@ export const CreatePost = () => {
 
     const createPost = async () => {
         const image = await convertImage();
-        const { data } = await instance.post('/createPost', { message: message, id: userId, image: image });
-        const post = data.data;
-        if (post !== undefined) {
+        const { data } = await instance.post('/updateUser/:id', {});
+        const user = data.data;
+        if (user !== undefined) {
             await refresh()
             navigate('/posts')
         }
@@ -38,7 +37,6 @@ export const CreatePost = () => {
     return (
         <div className="bigBoiContainer">
             <div className="inputContainer">
-                <input placeholder="message" type={'text'} id="input" onChange={(e) => setMessage(e.target.value)} value={message}></input>
                 <input type={'file'} id="fileInput" accept="image/jpeg, image/jpg, image/gif, image/png"></input>
                 <SubmitButton onClick={createPost} />
             </div>n

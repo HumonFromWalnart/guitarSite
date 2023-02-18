@@ -1,11 +1,16 @@
 
+
+
 import { useEffect, useRef, useState } from "react";
 import './signUp.css'
 import SubmitButton from "./submitButton";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../src/axiosSrc";
+import { Input } from "./input";
 
 export const SignUp = () => {
+    const [input, setInput] = useState({})
+    const fields = ['name', 'password', 'rePassword', 'email']
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [rePassword, setRePassword] = useState('');
@@ -25,7 +30,18 @@ export const SignUp = () => {
         return Math.floor(Math.random() * max);
     }
 
+
+
+    function handleChange(e) {
+        const value = e.target.value;
+        setInput({
+            ...input,
+            [e.target.name]: value
+        });
+    }
+
     const createUser = async () => {
+        console.log(input)
         if (rePassword == password) {
             const { data } = await instance.post('/user/create', { name: name, password: password, email: email });
             const user = data.data;
@@ -39,10 +55,10 @@ export const SignUp = () => {
         } else {
             ref.current.type = "text"
             pass.current.type = "text"
-            // setTimeout(() => {
-            //     ref.current.type = "password"
-            //     pass.current.type = "password"
-            // }, 1000);
+            setTimeout(() => {
+                ref.current.type = "password"
+                pass.current.type = "password"
+            }, 1000);
             setPassword(passRespond[getRandomInt(6)])
             setRePassword(passRespond[getRandomInt(6)])
             console.log("passwords didn't match!")
@@ -62,51 +78,25 @@ export const SignUp = () => {
             </div>
 
             <div className="inputContainer">
-                <input
-                    placeholder='name'
-                    type='text'
-                    id='input'
-                    onChange={(e) => setName(e.target.value)}
-                    value={name}
-                    onClick={() => setName('')}
-                />
-                <input
-                    placeholder='email'
-                    type='text'
-                    id='input'
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                    onClick={() => setEmail('')}
-                />
-                <input
-                    placeholder='password'
-                    type='password'
-                    id='input'
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                    onClick={() => {
-                        setPassword('');
-                        pass.current.type = "password"
-
-                    }}
-                    ref={pass}
-                />
-                <input
-                    placeholder='re-enter password'
-                    type='password'
-                    id='input'
-                    onChange={(e) => setRePassword(e.target.value)}
-                    value={rePassword}
-                    onClick={() => {
-                        setRePassword('');
-                        ref.current.type = "password"
-                    }}
-                    ref={ref}
-                />
+                {
+                    fields.map((field) => <Input value={input[field]} onChange={handleChange} placeholder={field} name={field} />)
+                }
+                {/* <Input
+                    type={ }
+                    value={value}
+                    style={{ borderColor }}
+                    onClick={onClick}
+                    onChange={onChange}
+                    placeholder={placeholder} />
+                <Input />
+                <Input />
+                <Input /> */}
                 <SubmitButton onClick={createUser} />
             </div>
         </div>
     );
 }
-export default SignUp;
 
+
+
+export default SignUp;

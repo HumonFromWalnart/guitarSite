@@ -8,7 +8,7 @@ export const PostData = createContext();
 
 const Source = ({ children }) => {
   const [postData, setPostData] = useState([]);
-  const [usersData, setUsersData] = useState([]);
+  const [userData, setUserData] = useState([]);
   const [skip, setSkip] = useState(0);
   const [limit, setLimit] = useState(10);
 
@@ -16,8 +16,8 @@ const Source = ({ children }) => {
     const res = await instance.get(`/posts?skip=${skip}&limit=${limit}`);
     console.log(res)
     setPostData(res.data.data);
-    const use = await instance.get("/users");
-    setUsersData(use.data.data);
+    const user = await instance.get("/users");
+    setUserData(user.data.data);
   }
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Source = ({ children }) => {
   }, [skip]);
 
   return (
-    <PostData.Provider value={{ postData, usersData, skip, setSkip, setLimit, refresh: getPostData }}>
+    <PostData.Provider value={{ postData, userData, skip, setSkip, setLimit, refresh: getPostData }}>
       {children}
     </PostData.Provider>
   );
