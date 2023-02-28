@@ -51,7 +51,8 @@ export const MainPage = (e) => {
 
                 </div>
             </div>
-            <div className='buttons'>
+            
+            <div className='footer'>
                 <ReverseButton />
                 <Button />
             </div>
