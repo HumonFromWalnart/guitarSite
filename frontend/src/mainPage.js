@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router';
 import { Button } from './button';
 import { ReverseButton } from './gobackbutton';
 import { Delete } from "./delete";
+import { Dot } from "./dot";
+
 export const MainPage = (e) => {
 
     const navigate = useNavigate();
@@ -16,20 +18,25 @@ export const MainPage = (e) => {
     //         console.log(cur.image)
     //     })
     // }
-    
+
     return (
         <div className="container" >
             <div className='firstContainer'>
 
             </div>
             <div className='secondContainer'>
-                <button onClick={() => navigate('/createPost')}>post comment</button>
+                <button onClick={() => navigate('/createPost')}>post something this site is dead</button>
                 {
                     postData?.map((cur) =>
                         <div className="post">
-                            <div className='user' onClick={() => {navigate(`./${userId}`)}}>
-                                <img id='profilePic' src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' />
-                                <div id='userName'>{cur.creator?.name}</div>
+                            <div className="postTop">
+                                <div className='user' onClick={() => { navigate(`./${userId}`) }}>
+                                    <img id='profilePic' src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' />
+                                    <div id='userName'>{cur.creator?.name}</div>
+                                </div>
+                                <div>
+                                    <Dot />
+                                </div>
                             </div>
                             <img src={cur.image} id="postImg"></img>
                             <div>{cur.message}</div>

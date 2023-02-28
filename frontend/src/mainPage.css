@@ -61,7 +61,7 @@ p {
 .user {
     display: flex;
     align-items: center;
-    margin: 3px;
+    margin: 3px
 }
 
 #logOut {
@@ -79,4 +79,10 @@ p {
 #postImg {
     width: 300px;
     height: 300px;
+    object-fit: contain;
+}
+
+.postTop{
+    display: flex;
+    align-items: center;
 }
