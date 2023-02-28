@@ -4,32 +4,13 @@ body {
     background-size: 2050px 1080px;
 }
 
-.container {
-    display: flex;
-    width: 2048px;
-}
-
-.firstContainer {
-    width: 683px;
-    height: 100%;
-}
 
 .secondContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    display: grid;
     height: 100%;
-    width: 683px;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
-.thirdContainer {
-    width: 683px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
 
 .post {
     display: flex;
@@ -37,7 +18,8 @@ body {
     align-items: flex-start;
     text-align: center;
     border: 1px solid rgba(128, 128, 128, 0.46);
-    background-color: rgba(255, 255, 255, 0.944);
+    /* background-color: rgba(255, 255, 255, 0.944); */
+    background-color: white;
     padding: 5px;
     margin: 10px;
 }
@@ -80,9 +62,15 @@ p {
     width: 300px;
     height: 300px;
     object-fit: contain;
+    background-color: black;
 }
 
-.postTop{
+.postTop {
     display: flex;
     align-items: center;
+}
+
+.postContainer {
+    display: flex;
+    width: 2048px;
 }

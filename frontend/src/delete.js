@@ -8,8 +8,9 @@ export const Delete = (props) => {
 
     const onClick = async () => {
         // const postId = localStorage.getItem("postId")
+        console.log(postId)
         const { data } = await instance.delete(`/deletePost/${postId}`);
-        console.log(data);
+        // console.log(data);
         await refresh()
     }
 
