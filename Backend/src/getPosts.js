@@ -1,7 +1,6 @@
 const PostModel = require('./postModel.js')
 
 const getPosts = async (req, res) => {
-
     const { skip, limit } = req.query;
 
     try {

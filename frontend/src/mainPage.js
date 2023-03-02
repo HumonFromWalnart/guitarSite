@@ -6,18 +6,18 @@ import { Button } from './button';
 import { ReverseButton } from './gobackbutton';
 import { Delete } from "./delete";
 import { Dot } from "./dot";
+import bruh from './bruh.mp3'
 
 export const MainPage = (e) => {
 
     const navigate = useNavigate();
-    const { postData, setSkip, setLimit } = useContext(PostData);
+    const { postData, setSkip, setLimit } = useContext(PostData)
     const userId = localStorage.getItem("uid");
 
-    // {
-    //     postData.map((cur) => {
-    //         console.log(cur.image)
-    //     })
-    // }
+    const playAudio = async () => {
+        const audio = new Audio(bruh);
+        audio.play()
+    }
 
     return (
         <div className="container" >
@@ -25,6 +25,7 @@ export const MainPage = (e) => {
             <div className="header">
                 <button onClick={() => navigate('/createPost')}>post something this site is dead</button>
                 <button id='logOut' onClick={() => navigate('/logIn')}>log out</button>
+                <button onClick={playAudio}>bruh</button>
             </div>
 
             <div className="postContainer">
@@ -44,14 +45,13 @@ export const MainPage = (e) => {
                                 </div>
                                 <img src={cur.image} id="postImg"></img>
                                 <div>{cur.message}</div>
-                                {/* <Delete onClick={()=> {localStorage.setItem("postId", cur._id)}}/> */}
                                 <Delete postId={cur._id} />
                             </div>)
                     }
 
                 </div>
             </div>
-            
+
             <div className='footer'>
                 <ReverseButton />
                 <Button />
@@ -59,3 +59,14 @@ export const MainPage = (e) => {
         </div>
     );
 }
+
+
+{/* <source src={getUrl(audio)} type="audio/mpeg"> */ }
+
+    // const [audio, setAudio] = useState({ buffer: null });
+
+    // const file = new File(this.audio.buffer, bruh, {
+    //     type: this.audio.blob.type
+    // });
+
+    // data.append("audio", file);

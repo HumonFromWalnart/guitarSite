@@ -13,7 +13,8 @@ const Source = ({ children }) => {
   const [limit, setLimit] = useState(10);
 
   const getPostData = async () => {
-    const res = await instance.get(`/posts?skip=${skip}&limit=${limit}`);
+    // const res = await instance.get(`/posts?skip=${skip}&limit=${limit}`);
+    const res = await instance.get(`/posts`);
     console.log(res)
     setPostData(res.data.data);
     const user = await instance.get("/users");
