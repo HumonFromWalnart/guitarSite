@@ -13,6 +13,7 @@ export const MainPage = (e) => {
     const navigate = useNavigate();
     const { postData, setSkip, setLimit } = useContext(PostData)
     const userId = localStorage.getItem("uid");
+    const audio = new Audio(bruh);
 
     const playAudio = async () => {
         const audio = new Audio(bruh);
