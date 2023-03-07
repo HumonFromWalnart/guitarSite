@@ -17,6 +17,7 @@ export const MainPage = (e) => {
 
     const playAudio = async () => {
         const audio = new Audio(bruh);
+        audio.volume = 1;
         audio.play()
     }
 
