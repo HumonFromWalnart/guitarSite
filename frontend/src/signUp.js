@@ -38,12 +38,6 @@ export const SignUp = () => {
             }
         } else {
             ref.current.type = "text"
-            pass.current.type = "text"
-            // setTimeout(() => {
-            //     ref.current.type = "password"
-            //     pass.current.type = "password"
-            // }, 1000);
-            setPassword(passRespond[getRandomInt(6)])
             setRePassword(passRespond[getRandomInt(6)])
             console.log("passwords didn't match!")
         }
@@ -86,8 +80,6 @@ export const SignUp = () => {
                     value={password}
                     onClick={() => {
                         setPassword('');
-                        pass.current.type = "password"
-
                     }}
                     ref={pass}
                 />

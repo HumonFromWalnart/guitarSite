@@ -8,6 +8,7 @@ import LogIn from './logIn.js'
 import { CreatePost } from './createPost.js';
 import Test from './testParam.js';
 import { Profile } from './profile.js';
+import { AudioPage } from './audioPage.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -16,12 +17,13 @@ root.render(
         <BrowserRouter>
             <Source>
                 <Routes>
-                    <Route path={'/posts'} element={<MainPage />}/>
+                    <Route path={'/posts'} element={<MainPage />} />
                     <Route path={'/'} element={<SignUp />} />
                     <Route path={'/LogIn'} element={<LogIn />} />
                     <Route path={'/createPost'} element={<CreatePost />} />
                     <Route path={'/test'} element={<Test />} />
                     <Route path={'/posts/:id'} element={<Profile />} />
+                    <Route path={'/audio'} element={<AudioPage />}></Route>
                 </Routes>
             </Source>
         </BrowserRouter>

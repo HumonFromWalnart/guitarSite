@@ -6,19 +6,12 @@ import { Button } from './button';
 import { ReverseButton } from './gobackbutton';
 import { Delete } from "./delete";
 import { Dot } from "./dot";
-import bruh from './bruh.mp3'
 
 export const MainPage = (e) => {
 
     const navigate = useNavigate();
     const { postData, setSkip, setLimit } = useContext(PostData)
     const userId = localStorage.getItem("uid");
-    const audio = new Audio(bruh);
-
-    const playAudio = async () => {
-        const audio = new Audio(bruh);
-        audio.play()
-    }
 
     return (
         <div className="container" >
@@ -26,7 +19,7 @@ export const MainPage = (e) => {
             <div className="header">
                 <button onClick={() => navigate('/createPost')}>post something this site is dead</button>
                 <button id='logOut' onClick={() => navigate('/logIn')}>log out</button>
-                <button onClick={playAudio}>bruh</button>
+                <button onClick={() => navigate('/audio')}>audios</button>
             </div>
 
             <div className="postContainer">

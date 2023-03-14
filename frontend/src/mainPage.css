@@ -79,3 +79,13 @@ p {
     width: 2048px;
     justify-content: center;
 }
+
+.audioContainer{
+    display: flex;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

@@ -1,7 +1,7 @@
 {
     "type": "commonjs",
     "scripts": {
-        "start": "nodemon index.js"
+        "s": "nodemon index.js"
     },
     "dependencies": {
         "bcrypt": "^5.1.0",
