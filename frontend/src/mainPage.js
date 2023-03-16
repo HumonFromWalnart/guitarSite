@@ -12,7 +12,6 @@ export const MainPage = (e) => {
     const navigate = useNavigate();
     const { postData, setSkip, setLimit } = useContext(PostData)
     const userId = localStorage.getItem("uid");
-
     return (
         <div className="container" >
 
