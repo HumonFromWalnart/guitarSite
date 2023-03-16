@@ -6,13 +6,11 @@
 }
 
 #button {
-    /* background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20200914/pngtree-splattered-blood-drops-halloween-blood-background-image_398578.jpg'); */
     background-size: 70px 20px;
-    /* color: rgb(181, 19, 19); */
-    color: black;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
     width: 100px;
+    color: rgb(0, 0, 0);
 }
 
 #button:active{

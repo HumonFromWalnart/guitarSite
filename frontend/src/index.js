@@ -24,6 +24,7 @@ root.render(
                     <Route path={'/test'} element={<Test />} />
                     <Route path={'/posts/:id'} element={<Profile />} />
                     <Route path={'/audio'} element={<AudioPage />}></Route>
+                    <Route path={'/users/:id'} element={<Profile/>}></Route>
                 </Routes>
             </Source>
         </BrowserRouter>

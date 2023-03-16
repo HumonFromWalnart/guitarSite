@@ -4,8 +4,7 @@ const UserSchema = new Schema({
     name: String,
     password: String,
     email : String,
-    role : String,
-    // registerDate: { type: Date, default: Date.now },
+    profileImg : String,
 }, { versionKey: false });
 
 const Usermodel = model("User", UserSchema);

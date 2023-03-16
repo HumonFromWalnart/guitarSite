@@ -1,6 +1,4 @@
-import axios from 'axios'
 import React, { createContext, useEffect, useState } from "react";
-import { useLocation } from 'react-router-dom'
 import { instance } from './axiosSrc';
 
 export const PostData = createContext();
@@ -13,8 +11,7 @@ const Source = ({ children }) => {
   const [limit, setLimit] = useState(10);
 
   const getPostData = async () => {
-    // const res = await instance.get(`/posts?skip=${skip}&limit=${limit}`);
-    const res = await instance.get(`/posts`);
+    const res = await instance.get(`/posts?skip=${skip}&limit=${limit}`);
     console.log(res)
     setPostData(res.data.data);
     const user = await instance.get("/users");
